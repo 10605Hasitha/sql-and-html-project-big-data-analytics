@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<!-- Add class for background styling -->
+<body class="index-page">
+    <h1>Movie Recommendation System</h1>
+    <!-- Dropdown for movie genre -->
+    <select id="genre" name="genre">
+        <option value="" disabled selected>Enter Genre (e.g. Action)</option>
+        <option value="Action">Action</option>
+        <option value="Drama">Drama</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Crime">Crime</option>
+        <option value="History">History</option>
+        <option value="Biography">Biography</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Music">Music</option>
+        <option value="Adventure">Adventure</option>
+        <option value="War">War</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Romance">Romance</option>
+    </select>
+    <!-- Button to trigger the recommendation -->
+    <button id="recommend_btn">Get Recommendations</button>
+    <!-- Table to display the recommendations -->
+    <div id="recommendations"></div>
+
+    <!-- JavaScript/jQuery code -->
+    <script>
+        $(document).ready(function() {
+            // When the "Get Recommendations" button is clicked
+            $('#recommend_btn').click(function() {
+                const genre = $('#genre').val();  // Get the genre input value
+                console.log(`Genre entered: ${genre}`);  // Debugging line
+
+                // Send a POST request to the Flask server
+                $.post('/recommend', { genre: genre }, function(data) {
+                    // If recommendations are returned, display them
+                    if (data.recommendations.length > 0) {
+                        let table = '<h2>Recommended Movies:</h2><table border="1"><tr><th>Title</th><th>Rating</th><th>Action</th></tr>';
+                        data.recommendations.forEach(movie => {
+                            table += `<tr>
+                                        <td>${movie.title}</td>
+                                        <td>${movie.rating}</td>
+                                        <td><a href="/movie/${encodeURIComponent(movie.title)}">More</a></td>
+                                      </tr>`;
+                        });
+                        table += '</table>';
+                        $('#recommendations').html(table);
+                    } else {
+                        // If no recommendations, show a message
+                        $('#recommendations').html('<h2>No recommendations found.</h2>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

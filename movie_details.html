@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }} - Details</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<!-- Add class for background styling -->
+<body class="details-page">
+    <h1>{{ movie.title }} ({{ movie.year }})</h1>
+    <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" style="display: block; margin: 0 auto; width: 300px;">
+    <p><strong>Rating:</strong> {{ movie.rating }}</p>
+    <p><strong>Description:</strong> {{ movie.description }}</p>
+    <p><strong>Cast:</strong> {{ movie.cast | join(', ') }}</p>
+    <p><strong>Hero:</strong> {{ movie.hero }}</p>
+    <p><strong>Heroine:</strong> {{ movie.heroine }}</p>
+    <p><strong>Where to Watch:</strong> {{ movie.where_to_watch }}</p>
+    
+    <!-- Home Icon to go back to the main page -->
+    <div class="home-icon">
+        <a href="/">🏠 Home</a>
+    </div>
+</body>
+</html>
