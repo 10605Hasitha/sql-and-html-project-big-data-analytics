@@ -1,0 +1,125 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Background image for the index page */
+body.index-page {
+    background-image: url('/static/images/mo1.jpg'); /* Add your background image */
+}
+
+/* Background image for the movie details page */
+body.details-page {
+    background-image: url('/static/images/mo2.jpg'); /* Add your background image */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    margin-top: 20px;
+}
+
+select {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1.2rem;
+    width: 50%;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: #f1f1f1;
+}
+
+/* Dropdown box placeholder styling */
+select:focus {
+    border-color: #4CAF50;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 70%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    color: black;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the movie details page */
+.movie-details {
+    text-align: center;
+    margin: 20px;
+}
+
+.movie-details img {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+}
+
+.movie-details p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Back to home icon */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+}
+
+.home-icon a {
+    color: white;
+}
+
+.home-icon a:hover {
+    color: #ddd;
+}
+
+/* Make the page scrollable */
+body {
+    overflow-y: scroll;
+}
